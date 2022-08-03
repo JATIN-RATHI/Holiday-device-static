@@ -21,21 +21,57 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    'bootstrap/dist/css/bootstrap.css',
+    'bootstrap-vue/dist/bootstrap-vue.css'
   ],
+  loaders: {
+    vue:{
+      prettify: false,
+    },
+    sass: {
+      happyPackMode: true,
+      indentedSyntax: true,
+    },
+    scss: {
+      happyPackMode: true,
+    },
+    ts: {
+      transpileOnly: true,
+      happyPackMode: true,
+      appendTsSuffixTo: [/\.vue$/],
+    }
+  },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/bootstrapVue.ts',
+    '~/plugins/bootstrap.ts'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
+  bootstrapVue:{
+    components: ['BCarousel', 'BCarouselSlide', 'BCard', 'BCardText', 'BCardGroup'],
+  },
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    '@nuxt/typescript-build',
+    '@nuxtjs/fontawesome'
   ],
-
+  fontawesome: {
+    component: 'fa',
+    icons: {
+      solid: true,
+      brands: true,
+    }
+  },
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/style-resources',
+    '@nuxtjs/axios',
+    'bootstrap-vue/nuxt',
+    'nuxt-purgecss'
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
