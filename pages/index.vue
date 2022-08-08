@@ -1,6 +1,5 @@
 <template>
   <div>
-    <videoBannerVue></videoBannerVue>
     <NavbarHomeVue></NavbarHomeVue>
     <div v-for="(item, index) in slideshowContent" :key="index">
       <HomeSlideshowTop 
@@ -18,7 +17,6 @@ import ContentfulRequest from '~/plugins/contentfulRequest'
 import HomeSlideshowTop from '../components/HomeSlideshowTop.vue'
 import NavbarHomeVue from '~/components/NavbarHome.vue'
 import DestinationCardsVue from '~/components/DestinationCards.vue'
-import videoBannerVue from '~/components/videoBanner.vue'
 
 const contentfulRequest = new ContentfulRequest()
 
@@ -27,12 +25,10 @@ const contentfulRequest = new ContentfulRequest()
     HomeSlideshowTop,
     NavbarHomeVue,
     DestinationCardsVue,
-    videoBannerVue
   },
   async asyncData() {
     const slideshowContent = (await contentfulRequest.getHolidayDeviceHomeSlideshowContent()) || {}
-    console.log(slideshowContent)
-    return slideshowContent
+    return slideshowContent 
   }
 })
 export default class HolidayDevice extends Vue{
