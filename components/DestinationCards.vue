@@ -32,9 +32,7 @@ const contentfulRequest = new ContentfulRequest()
         }
     },
     async fetch() {
-        const packageCardContent = (await contentfulRequest.getHolidayDeviceHomeCardContent()) || {}
-        console.log(packageCardContent)
-        this.$data.packageCardContent = packageCardContent
+        this.$data.packageCardContent = (await contentfulRequest.getHolidayDeviceHomeCardContent()) || {}
     }
 })
 export default class DestinationCards extends Vue{
@@ -61,7 +59,7 @@ export default class DestinationCards extends Vue{
 }
 @media (min-width: 992px){
     .card{
-        width: 15rem;
+        width: 17rem;
     }
 }
 @media (min-width: 1200px){

@@ -1,3 +1,4 @@
+import webpack from "webpack"
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -16,13 +17,20 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    script: [
+      {
+        src: 'https://code.jquery-3.4.1.min.js',
+        type: 'text/javascript',
+        body: true,
+      }
     ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     'bootstrap/dist/css/bootstrap.css',
-    'bootstrap-vue/dist/bootstrap-vue.css'
+    'bootstrap-vue/dist/bootstrap-vue.css', 
   ],
   loaders: {
     vue:{
@@ -39,13 +47,20 @@ export default {
       transpileOnly: true,
       happyPackMode: true,
       appendTsSuffixTo: [/\.vue$/],
-    }
+    },
+    plugins: [
+      new webpack.ProvidePlugin({
+        $: 'jquery',
+        JQuery: 'jquery',
+        $validator: 'vee-validate.ts',
+      }),
+    ]
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/bootstrapVue.ts',
-    '~/plugins/bootstrap.ts'
+    '~/plugins/bootstrap.ts',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

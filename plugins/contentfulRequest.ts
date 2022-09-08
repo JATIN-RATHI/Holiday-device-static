@@ -35,4 +35,36 @@ export default class ContentfulRequests {
         })
         return data
     }
+    public async getHolidayDeviceHomeSeasonPackageContent(): Promise<{ seasonPackageContent: any[]}> {
+        const data = { seasonPackageContent: [] }
+        await contentfulClient
+        .getEntries({
+            content_type: 'seasonPackageGallery',
+        })   
+        .then((res: any)=>{
+            data.seasonPackageContent = res?.items || []
+        })
+        .catch((error: Error): any =>{
+            console.error(`Error: ${ error.message }`)
+            console.error(`StackTrace: ${ error.stack }`)
+            process.exit(1)
+        })
+        return data
+    }
+    public async getHolidayDeviceHomeTestimonialsContent(): Promise<{ testimonialsContent: any[]}> {
+        const data = { testimonialsContent: [] }
+        await contentfulClient
+        .getEntries({
+            content_type: 'testimonials',
+        })   
+        .then((res: any)=>{
+            data.testimonialsContent = res?.items || []
+        })
+        .catch((error: Error): any =>{
+            console.error(`Error: ${ error.message }`)
+            console.error(`StackTrace: ${ error.stack }`)
+            process.exit(1)
+        })
+        return data
+    }
 }
