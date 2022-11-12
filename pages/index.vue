@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavbarHomeVue></NavbarHomeVue>
+    <NavbarHomeVue />
     <div v-for="(item, index) in slideshowContent" :key="index">
       <HomeSlideshowTop 
         :slides="item.fields.backgroundSideshowImage"
@@ -14,6 +14,26 @@
     <h2 class="container card-heading justify-content-center my-5">Season Tour Package</h2>
     <SeasonPackageCards />
     <h2 class="container card-heading justify-content-center my-5" id="testimonials">Our Customer Reviews</h2>
+    <div>
+      <button id="sideButton" @click="show()">Quick Enquiry</button>
+      <div v-if="showModal" class="modal-vue">        
+        <div class="overlay" @click="hide()"></div>
+        <div class="modal o-section container d-block justify-content-center align-items-center">
+            <a id="close" style="cursor:pointer;padding-left: 100%;" @click="hide()"><FontAwesomeIcon icon="x" /> </a>  
+            <h2 class="justify-content-center">Quick Enquiry</h2>
+            <form>                      
+                <input id="field" type="text" placeholder="Full Name">
+                <input id="field" type="text" maxlength="10" placeholder="XXXX-XXX-XXX">
+                <input id="field" type="text" placeholder="Email ID">
+                <textarea id="field" name="description" cols="30" rows="4" placeholder="Describe your enquiry we'll get back to you asap!"></textarea>
+            </form>
+            <button class="submitBtn mx-auto">Submit Enquiry</button>
+        </div>
+      </div>
+      <a href="https://wa.me/+919910903878" target="_blank">
+        <img id="quickchat" src="//images.ctfassets.net/8053dpll6ke8/6NRlk4c2TkubvMuDrom6UH/10b115063cad404a095a26221f78f9f7/contactus.gif" alt="quickchat"></img>
+      </a>
+    </div>
     <ReviewsCards />
     <Footerbase />
   </div>  
@@ -29,7 +49,12 @@ import TourIncludeSection from '~/components/TourIncludeSection.vue'
 import SeasonPackageCards from '../components/SeasonPackageCards.vue'
 import Footerbase from '../components/Footerbase.vue'
 import ReviewsCards from '../components/ReviewsCards.vue'
-
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import $ from 'jquery'
+import { emitter } from '@/utils/emitter'
+library.add(fas)
 const contentfulRequest = new ContentfulRequest()
 
 @Component({
@@ -41,15 +66,36 @@ const contentfulRequest = new ContentfulRequest()
     SeasonPackageCards,
     Footerbase,
     ReviewsCards,
+    FontAwesomeIcon,
+  },
+  methods: {
+    show(){
+      this.$data.showModal = true;
+      $('body').css('overflow', 'hidden')
+      
+    },
+    hide(){
+      this.$data.showModal = false;
+      $('body').css('overflow', 'scroll')
+    }
+  },
+  data() {
+      return {
+      }
+    },  
+  mounted(){
+    this.$data.showModal = true;
+    emitter.on('enquiryFormModal', this.show)
   },
   async asyncData() {
     const slideshowContent = (await contentfulRequest.getHolidayDeviceHomeSlideshowContent()) || {}
     return slideshowContent 
-  }
+  }  
 })
 export default class HolidayDevice extends Vue{
   data() {
       return {
+        showModal: false
       }
     }
 }
@@ -78,6 +124,84 @@ export default class HolidayDevice extends Vue{
 h2:after {
     margin-right: -68%;
     text-align: right;
+}
+.modal-vue .overlay {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+}
+#field {
+    width: 90%;
+    margin: 1rem;
+    padding: 0.5rem;
+}
+.modal-vue .modal {
+  position: fixed;
+  align-items: center;
+  height: 550px;
+  max-width: 450px;
+  min-width: 310px;
+  left: 50%;
+  top: 13%;
+  z-index: 9999;
+  margin: 0 auto;
+  padding: 20px 30px;
+  border-radius: 15px;
+  background-color: #fff;
+  transform: translateX(-50%);
+}
+
+.modal-vue .close{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+#sideButton {
+    background-color: #ea7272f0;
+    border: white;
+    color: white;
+    height: 3rem;
+    font-size: 1.5rem;
+    position: fixed;
+    display: block;
+    top: 50%;
+    right: -3rem;
+    left: inherit;
+    width: 10.5rem;
+    height: 3rem;
+    z-index: 1;
+    margin-top: -8.25rem;
+    transform: rotate(270deg);
+    transform-origin: 100% 100% 0;
+    animation: btn-slide .5s ease-out 1.4s forwards;
+}
+#quickchat{
+  width: 3rem;
+  position: fixed;
+  display: block;
+  top: 100%;
+  right: -3rem;
+  left: inherit;
+  z-index: 1;
+  margin-top: -8.25rem;
+  transform-origin: 100% 100% 0;
+  animation: btn-slide .5s ease-out 1.4s forwards;
+}
+.submitBtn {
+  font-size: 1.2rem;
+  background-color: #ea7272f0;
+  padding: 10px;
+  color: white;
+  border-color: #ea7272f0;
+}
+@keyframes btn-slide {
+  100% {
+    right: 0;
+  }
 }
 @media (min-width:768px){
   .card-heading:before, .card-heading:after {

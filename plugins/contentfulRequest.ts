@@ -67,4 +67,54 @@ export default class ContentfulRequests {
         })
         return data
     }
+    public async getHolidayDevicePageContent(): Promise<{ pageContent: any[]}> {
+        const data = { pageContent: [] }
+        await contentfulClient
+        .getEntries({
+            content_type: 'packageCard'
+        })
+        .then((res: any) => {
+            data.pageContent = res?.items || []
+            console.log("async data", data)
+        })
+        .catch((error: Error): any => {
+            console.error(`Error: ${ error.message }`)
+            console.error(`StackTrace: ${ error.stack }`)
+            process.exit(1)
+        })
+        return data
+    }
+    public async getHolidayDeviceHeroContent(): Promise<{ heroContent: any[]}> {
+        const data = { heroContent: [] }
+        await contentfulClient
+        .getEntries({
+            content_type: 'heroSection'
+        })
+        .then((res: any) => {
+            data.heroContent = res?.items || []
+        })
+        .catch((error: Error): any => {
+            console.error(`Error: ${ error.message }`)
+            console.error(`StackTrace: ${ error.stack }`)
+            process.exit(1)
+        })
+        return data
+    }
+    public async getPageDataBySlug(slug: string): Promise<object>{
+        const data = {}
+        await contentfulClient
+        .getEntries({
+            content_type: 'page',
+            'fields.slug': `${slug}`,
+        })
+        .then((entry: any): any => {
+            data[0] = entry.items[0]
+        })
+        .catch((error: Error): any => {
+            console.error(`Error: ${ error.message }`)
+            console.error(`StackTrace: ${ error.stack }`)
+            process.exit(1)
+        })
+        return data[0]
+    }
 }
