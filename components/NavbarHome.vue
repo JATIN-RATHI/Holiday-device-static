@@ -19,7 +19,7 @@
                                 <b-dropdown-item><FontAwesomeIcon icon="hill-avalanche" /> Utrakhand</b-dropdown-item>
                                 <b-dropdown-item><FontAwesomeIcon icon="hill-avalanche" /> Kerala</b-dropdown-item>
                                 <b-dropdown-item><FontAwesomeIcon icon="hill-avalanche" /> Rajasthan</b-dropdown-item>
-                                <b-dropdown-item><FontAwesomeIcon icon="hill-avalanche" /> Goa</b-dropdown-item>
+                                <b-dropdown-item><FontAwesomeIcon icon="umbrella-beach" /> Goa</b-dropdown-item>
                                 <b-dropdown-item><FontAwesomeIcon icon="hill-avalanche" /> Andman</b-dropdown-item>                   
                             </div>
                             <div>
