@@ -73,7 +73,7 @@
                     </div>
                 </div>
                 <div class="button-class">
-                    <a :href="`/destinations/${TourPackage.fields.slug}`"><button class="btn-details">View
+                    <a :href="`/destinations/place/${TourPackage.fields.slug}`"><button class="btn-details">View
                             Details</button></a>
                     <br />
                     <a @click="show()"><button class="btn-enquire">Enquire Now</button></a>
@@ -154,10 +154,10 @@ const contentfulRequest = new ContentfulRequests()
                 iconDown.style.display = "none"
                 moreBtn.style.display = "none"
                 lessBtn.style.display = "inline"
-                moreText.style.display = "inline"
+                moreText.style.display = "inline" 
                 iconUp.style.display = "inline"
             }
-        },
+        },  
         show() {
             this.$data.showModal = true;
             $('body').css('overflow', 'hidden')

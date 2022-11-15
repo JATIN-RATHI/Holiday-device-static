@@ -1,7 +1,9 @@
 <template>
     <div>
         <NavbarHome />
-        <div class="container hero-package"></div>
+        <div class="container hero-package">
+            <img src="//images.ctfassets.net/8053dpll6ke8/5jwlFUsYy9qUh52iMhklrH/6bae5731a211c80c834f3c19ceea890e/kashmir_slideshow.jpg" alt="">
+        </div>
         <div class="tour-card my-5 container" v-for="TourPackage in destinationDataWithSlug"
             :key="TourPackage.fields.destinationName">
             <img class="image-box" :src="TourPackage.fields.destinationImage.fields.file.url"
@@ -32,7 +34,7 @@
                 </div>
             </div>
             <div class="button-class">
-                <a :href="`/destinations/${TourPackage.fields.slug}`"><button class="btn-details">View
+                <a :href="`/destinations/place/${slug}/${TourPackage.fields.packageSlug}`"><button class="btn-details">View
                         Details</button></a>
                 <br />
                 <a @click="show()"><button class="btn-enquire">Enquire Now</button></a>
@@ -71,7 +73,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
-import NavbarHome from '../../components/NavbarHome.vue'
+import NavbarHome from '~/components/NavbarHome.vue'
 import Footerbase from '~/components/Footerbase.vue'
 import ContentfulRequests from '~/plugins/contentfulRequest'
 import $ from 'jquery'
@@ -85,7 +87,8 @@ const contentfulRequest = new ContentfulRequests()
     },
     data() {
         return {
-            showModal: false
+            showModal: false,
+            packageSlug: '',
         }
     },
     methods: {
@@ -124,10 +127,9 @@ const contentfulRequest = new ContentfulRequests()
     async asyncData({ params }) {
         const slug = params.place
         const dataWithSlug = (await contentfulRequest.getPageDataBySlug(slug)) || {}
-        console.log("slug", params.place)
         console.log("by slug", dataWithSlug.fields.packageSection)
         const destinationDataWithSlug = dataWithSlug.fields.packageSection
-        return { destinationDataWithSlug }
+        return { destinationDataWithSlug, slug }
     }
 })
 export default class SpecialityTours extends Vue {
@@ -135,12 +137,8 @@ export default class SpecialityTours extends Vue {
 }
 </script>
 <style scoped>
-.hero-package {
-    background-size: cover;
-    height: 350px;
-    background-repeat: no-repeat;
-    background-image: url('//images.ctfassets.net/8053dpll6ke8/5jwlFUsYy9qUh52iMhklrH/6bae5731a211c80c834f3c19ceea890e/kashmir_slideshow.jpg');
-    background-position: center;
+.hero-package img{
+    width: 100%;
 }
 
 .hero-special {
