@@ -15,26 +15,26 @@
                     >
                         <div style="display:flex">
                             <div>
-                                <b-dropdown-item><FontAwesomeIcon icon="hill-avalanche" /> Himachal Pradesh</b-dropdown-item>
-                                <b-dropdown-item><FontAwesomeIcon icon="hill-avalanche" /> Utrakhand</b-dropdown-item>
-                                <b-dropdown-item><FontAwesomeIcon icon="hill-avalanche" /> Kerala</b-dropdown-item>
-                                <b-dropdown-item><FontAwesomeIcon icon="hill-avalanche" /> Rajasthan</b-dropdown-item>
-                                <b-dropdown-item><FontAwesomeIcon icon="hill-avalanche" /> Goa</b-dropdown-item>
-                                <b-dropdown-item><FontAwesomeIcon icon="hill-avalanche" /> Andman</b-dropdown-item>                   
+                                <b-dropdown-item><FontAwesomeIcon icon="mountain" /> Himachal Pradesh</b-dropdown-item>
+                                <b-dropdown-item><FontAwesomeIcon icon="mountain-sun" /> Utrakhand</b-dropdown-item>
+                                <b-dropdown-item><FontAwesomeIcon icon="vihara" /> Kerala</b-dropdown-item>
+                                <b-dropdown-item><FontAwesomeIcon icon="fort" /> Rajasthan</b-dropdown-item>
+                                <b-dropdown-item><FontAwesomeIcon icon="umbrella-beach" /> Goa</b-dropdown-item>
+                                <b-dropdown-item><FontAwesomeIcon icon="whale" /> Andman</b-dropdown-item>                   
                             </div>
                             <div>
-                                <b-dropdown-item><FontAwesomeIcon icon="hill-avalanche" /> Bali</b-dropdown-item>
-                                <b-dropdown-item><FontAwesomeIcon icon="hill-avalanche" /> Dubai</b-dropdown-item>
-                                <b-dropdown-item><FontAwesomeIcon icon="hill-avalanche" /> Mauritius</b-dropdown-item>
-                                <b-dropdown-item><FontAwesomeIcon icon="hill-avalanche" /> Maldives</b-dropdown-item>
-                                <b-dropdown-item><FontAwesomeIcon icon="hill-avalanche" /> Singapore</b-dropdown-item>
+                                <b-dropdown-item><FontAwesomeIcon icon="tree-palm" /> Bali</b-dropdown-item>
+                                <b-dropdown-item><FontAwesomeIcon icon="city" /> Dubai</b-dropdown-item>
+                                <b-dropdown-item><FontAwesomeIcon icon="cloud-sun-rain" /> Mauritius</b-dropdown-item>
+                                <b-dropdown-item><FontAwesomeIcon icon="water" /> Maldives</b-dropdown-item>
+                                <b-dropdown-item><FontAwesomeIcon icon="bridge-water" /> Singapore</b-dropdown-item>
                             </div>
                             <div>
-                                <b-dropdown-item><FontAwesomeIcon icon="hill-avalanche" /> Thailand</b-dropdown-item>
-                                <b-dropdown-item><FontAwesomeIcon icon="hill-avalanche" /> Lddakh</b-dropdown-item>
-                                <b-dropdown-item><FontAwesomeIcon icon="hill-avalanche" /> North East</b-dropdown-item>
-                                <b-dropdown-item><FontAwesomeIcon icon="hill-avalanche" /> Nepal</b-dropdown-item>
-                                <b-dropdown-item><FontAwesomeIcon icon="hill-avalanche" /> Kashmir</b-dropdown-item>
+                                <b-dropdown-item><FontAwesomeIcon icon="place-of-worship" /> Thailand</b-dropdown-item>
+                                <b-dropdown-item><FontAwesomeIcon icon="mountains" /> Ladakh</b-dropdown-item>
+                                <b-dropdown-item><FontAwesomeIcon icon="landmark" /> North East</b-dropdown-item>
+                                <b-dropdown-item><FontAwesomeIcon icon="gopuram" /> Nepal</b-dropdown-item>
+                                <b-dropdown-item><FontAwesomeIcon icon="snowflake" /> Kashmir</b-dropdown-item>
                             </div>                        
                         </div>
                     </b-nav-item-dropdown>
