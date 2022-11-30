@@ -11,7 +11,7 @@
     <TourIncludeSection />
     <h2 class="container card-heading justify-content-center my-5">Popular Destinations</h2>
     <DestinationCardsVue />
-    <h2 class="container card-heading justify-content-center my-5">Season Tour Package</h2>
+    <h2 class="container card-heading justify-content-center my-5">Our Tour Package</h2>
     <SeasonPackageCards />
     <h2 class="container card-heading justify-content-center my-5" id="testimonials">Our Customer Reviews</h2>
     <div>
