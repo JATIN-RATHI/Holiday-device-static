@@ -2,10 +2,11 @@
     <div>
         <div id="lg-screen" class="justify-content-between">
             <img src="//images.ctfassets.net/8053dpll6ke8/7o4FrG2QOQzrg27NqW80lU/782eeb70f8e350c1f4c93d372792a8cc/HD_logo_top.png" style="height: 85px">
-            <b-nav pills class="navBar">   
-                <b-nav-item>Home</b-nav-item>             
+            
+            <b-nav pills class="navBar">             
+                <b-nav-item to="">Home</b-nav-item> 
                 <div @mouseover="destinationOnOver" @mouseleave="destinationOnLeave">
-                    <b-nav-item-dropdown
+                    <b-nav-item-dropdown                  
                     class="dropdownItem"
                     ref="destinations"
                     id="my-nav-dropdown"
@@ -13,17 +14,18 @@
                     toggle-class="nav-link-custom"
                     right
                     >
-                        <div style="display:flex">
+                    <b-dropdown-item @click="navigatePage('/destinations')" class="text-center h5 dest-all"><FontAwesomeIcon icon="hand-holding-heart" /> All Destination Packages</b-dropdown-item>
+                        <div style="display:flex">                            
                             <div>
                                 <b-dropdown-item><FontAwesomeIcon icon="mountain" /> Himachal Pradesh</b-dropdown-item>
                                 <b-dropdown-item><FontAwesomeIcon icon="mountain-sun" /> Utrakhand</b-dropdown-item>
                                 <b-dropdown-item><FontAwesomeIcon icon="vihara" /> Kerala</b-dropdown-item>
-                                <b-dropdown-item><FontAwesomeIcon icon="fort" /> Rajasthan</b-dropdown-item>
+                                <b-dropdown-item><FontAwesomeIcon icon="place-of-worship" /> Rajasthan</b-dropdown-item>
                                 <b-dropdown-item><FontAwesomeIcon icon="umbrella-beach" /> Goa</b-dropdown-item>
-                                <b-dropdown-item><FontAwesomeIcon icon="whale" /> Andman</b-dropdown-item>                   
+                                <b-dropdown-item><FontAwesomeIcon icon="water" /> Andman</b-dropdown-item>                   
                             </div>
                             <div>
-                                <b-dropdown-item><FontAwesomeIcon icon="tree-palm" /> Bali</b-dropdown-item>
+                                <b-dropdown-item><FontAwesomeIcon icon="umbrella-beach" /> Bali</b-dropdown-item>
                                 <b-dropdown-item><FontAwesomeIcon icon="city" /> Dubai</b-dropdown-item>
                                 <b-dropdown-item><FontAwesomeIcon icon="cloud-sun-rain" /> Mauritius</b-dropdown-item>
                                 <b-dropdown-item><FontAwesomeIcon icon="water" /> Maldives</b-dropdown-item>
@@ -31,7 +33,7 @@
                             </div>
                             <div>
                                 <b-dropdown-item><FontAwesomeIcon icon="place-of-worship" /> Thailand</b-dropdown-item>
-                                <b-dropdown-item><FontAwesomeIcon icon="mountains" /> Ladakh</b-dropdown-item>
+                                <b-dropdown-item><FontAwesomeIcon icon="water" /> Ladakh</b-dropdown-item>
                                 <b-dropdown-item><FontAwesomeIcon icon="landmark" /> North East</b-dropdown-item>
                                 <b-dropdown-item><FontAwesomeIcon icon="gopuram" /> Nepal</b-dropdown-item>
                                 <b-dropdown-item><FontAwesomeIcon icon="snowflake" /> Kashmir</b-dropdown-item>
@@ -39,7 +41,7 @@
                         </div>
                     </b-nav-item-dropdown>
                 </div>
-                <div @mouseover="specialityToursOnOver" @mouseleave="specialityToursOnLeave">
+                <!-- <div @mouseover="specialityToursOnOver" @mouseleave="specialityToursOnLeave">
                     <b-nav-item-dropdown
                     ref="specialityTours"
                     id="my-nav-dropdown"
@@ -64,9 +66,9 @@
                             </div>                      
                         </div>
                     </b-nav-item-dropdown>
-                </div>
-                <b-nav-item>About Us</b-nav-item>
-                <b-nav-item>Contact Us</b-nav-item>
+                </div> -->
+                <b-nav-item to="/about-us">About Us</b-nav-item>
+                <b-nav-item @click="contactUs">Contact Us</b-nav-item>
             </b-nav>
         </div>
         <div id="sm-screen" class="justify-content-between">            
@@ -132,7 +134,7 @@
   import { Component, Vue, Prop} from 'vue-property-decorator'
   import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
   import { library } from '@fortawesome/fontawesome-svg-core'
-  import { faLaptopHouse, fas } from '@fortawesome/free-solid-svg-icons'
+  import { fas } from '@fortawesome/free-solid-svg-icons'
 
   library.add(fas)
   @Component({
@@ -170,6 +172,12 @@
             else{
                 this.$data.specialTours = false
             }
+        },
+        navigatePage(url) {
+            this.$router.push(url)
+        },
+        contactUs() {
+            window.location = "tel:8130586075";
         }
     }
   })
@@ -193,6 +201,9 @@
   }
 </script>
 <style>
+    .dest-all {
+        background-color:#ffff003d;
+    }
     #lg-screen {
         display: none;
     }

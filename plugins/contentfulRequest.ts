@@ -71,11 +71,10 @@ export default class ContentfulRequests {
         const data = { pageContent: [] }
         await contentfulClient
         .getEntries({
-            content_type: 'packageCard'
+            content_type: 'card'
         })
         .then((res: any) => {
             data.pageContent = res?.items || []
-            console.log("async data", data)
         })
         .catch((error: Error): any => {
             console.error(`Error: ${ error.message }`)
@@ -106,6 +105,23 @@ export default class ContentfulRequests {
         .getEntries({
             content_type: 'page',
             'fields.slug': `${slug}`,
+        })
+        .then((entry: any): any => {
+            data[0] = entry.items[0]
+        })
+        .catch((error: Error): any => {
+            console.error(`Error: ${ error.message }`)
+            console.error(`StackTrace: ${ error.stack }`)
+            process.exit(1)
+        })
+        return data[0]
+    }
+    public async getPageDataByPackageSlug(packageSlug: string): Promise<object>{
+        const data = {}
+        await contentfulClient
+        .getEntries({
+            content_type: 'packageCard',
+            'fields.packageSlug': `${packageSlug}`,
         })
         .then((entry: any): any => {
             data[0] = entry.items[0]

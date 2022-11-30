@@ -2,21 +2,21 @@
     <div>
         <NavbarHome />
         <div class="container hero-package">
-            <img src="//images.ctfassets.net/8053dpll6ke8/5jwlFUsYy9qUh52iMhklrH/6bae5731a211c80c834f3c19ceea890e/kashmir_slideshow.jpg" alt="">
+            <img src="//images.ctfassets.net/8053dpll6ke8/5jwlFUsYy9qUh52iMhklrH/6bae5731a211c80c834f3c19ceea890e/kashmir_slideshow.jpg" alt="bkg-img">
         </div>
         <div class="tour-card my-5 container" v-for="TourPackage in destinationDataWithSlug"
-            :key="TourPackage.fields.destinationName">
-            <img class="image-box" :src="TourPackage.fields.destinationImage.fields.file.url"
-                :alt="TourPackage.fields.destinationName">
+            :key="TourPackage.fields.packageName">
+            <img class="image-box" :src="TourPackage.fields.cardImage.fields.file.url"
+                :alt="TourPackage.fields.packageName">
             <div class="m-3">
                 <div class="card-badge">
-                    <span v-if="TourPackage.fields.groupTour" class="danger px-2">Group Tour</span>
-                    <span v-if="TourPackage.fields.familyTour" class="success px-2">Family</span>
-                    <span v-if="TourPackage.fields.couplesTour" class="warning px-2">Couples</span>
-                    <span v-if="TourPackage.fields.seniorsSpecialTour" class="info px-2">Senior's Special</span>
+                    <span v-if="TourPackage.fields.isGroupTour" class="danger px-2">Group Tour</span>
+                    <span v-if="TourPackage.fields.isFamilyTour" class="success px-2">Family</span>
+                    <span v-if="TourPackage.fields.isCoupleTour" class="warning px-2">Couples</span>
+                    <span v-if="TourPackage.fields.isSeniorsCitizenTour" class="info px-2">Senior's Special</span>
                 </div>
-                <h2>{{ TourPackage.fields.destinationName }}</h2>
-                <p>{{ TourPackage.fields.destinationDuration }}</p>
+                <h2>{{ TourPackage.fields.packageName }}</h2>
+                <p>{{ TourPackage.fields.duration }}</p>
                 <div class="my-2">
                     <FontAwesomeIcon class="icon-thread" icon="fa-plate-wheat" />
                     <FontAwesomeIcon class="icon-thread" icon="fa-building-circle-check" />
@@ -25,7 +25,7 @@
                 <div class="path d-flex">
                     <FontAwesomeIcon class="icon-tour" icon="fa-location-dot" />
                     <h5>{{ TourPackage.fields.tripStarts }}</h5>
-                    <FontAwesomeIcon class="icon-dot" icon="fa-ellipsis" />
+                    <FontAwesomeIcon v-if="TourPackage.fields.tripVia" class="icon-dot" icon="fa-ellipsis" />
                     <FontAwesomeIcon v-if="TourPackage.fields.tripVia" class="icon-tour" icon="fa-location-dot" />
                     <h5 v-if="TourPackage.fields.tripVia">{{ TourPackage.fields.tripVia }}</h5>
                     <FontAwesomeIcon class="icon-dot" icon="fa-ellipsis" />
@@ -126,6 +126,7 @@ const contentfulRequest = new ContentfulRequests()
     },
     async asyncData({ params }) {
         const slug = params.place
+        console.log(params)
         const dataWithSlug = (await contentfulRequest.getPageDataBySlug(slug)) || {}
         console.log("by slug", dataWithSlug.fields.packageSection)
         const destinationDataWithSlug = dataWithSlug.fields.packageSection

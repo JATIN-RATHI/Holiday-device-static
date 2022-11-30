@@ -5,7 +5,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'holiday-device-static',
+    title: 'Holiday Device - Device to see the world',
     htmlAttrs: {
       lang: 'en'
     },
@@ -16,7 +16,7 @@ export default {
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/holiday_device.ico' }
     ],
     script: [
       {
