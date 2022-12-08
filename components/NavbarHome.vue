@@ -99,7 +99,7 @@
                             <li><a>Kashmir</a></li>
                         </ul>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a v-if="!specialTours" @click="show('specialTours')">Speciality Tours <FontAwesomeIcon icon="fa-caret-down"/></a>
                         <a v-if="specialTours" @click="close('specialTours')">Speciality Tours <FontAwesomeIcon icon="fa-caret-up"/></a>
                         <ul v-if="specialTours" class="sub-categories text-center">
@@ -114,7 +114,7 @@
                             <li><a>Family Fun</a></li>
                             <li><a>World Tour</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                     <li>About us</li>
                     <li>Contact us</li>
                     <li class="text-center mt-4">Follow us:</li>

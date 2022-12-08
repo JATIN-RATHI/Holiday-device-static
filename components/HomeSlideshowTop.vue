@@ -23,7 +23,7 @@
       <h1>{{ title }}</h1>
       <h2>{{ slide.fields.title }}</h2>
       <p>{{ slide.fields.description }}</p>
-      <button>Book Now!</button>
+      <button @click="openModal">Book Now!</button>
       </b-carousel-slide>
     </b-carousel>
   </div>
@@ -32,6 +32,7 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator'
 import { BCarousel, BCarouselSlide } from 'bootstrap-vue'
+import { emitter } from '@/utils/emitter'
 @Component({
     components:{
         BCarousel,
@@ -49,6 +50,9 @@ import { BCarousel, BCarouselSlide } from 'bootstrap-vue'
       },
       onSlideEnd(slideNo) {
         this.$data.sliding = false
+      },
+      openModal() {
+          emitter.emit('enquiryFormModal')
       }
     }
 })

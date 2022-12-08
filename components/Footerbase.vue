@@ -44,11 +44,11 @@
                                 <p>Lorem ipsum dolor sit amet, consec tetur adipisicing elit, sed do eiusmod tempor incididuntut consec tetur adipisicing
                                 elit,Lorem ipsum dolor sit amet.</p>
                             </div>
-                            <div class="footer-social-icon">
+                            <div class="footer-social-icon d-flex">
                                 <span>Follow us</span>
-                                <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
-                                <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
-                                <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
+                                <a href="#"><FontAwesomeIcon class="social-icon" icon="fab fa-facebook"/></a>
+                                <a href="#"><FontAwesomeIcon class="social-icon" icon="fab fa-instagram"/></a>
+                                <a href="#"><FontAwesomeIcon class="social-icon" icon="fab fa-telegram"/></a>
                             </div>
                         </div>
                     </div>
@@ -59,15 +59,9 @@
                             </div>
                             <ul>
                                 <li><a href="#">Home</a></li>
-                                <li><a href="#">about</a></li>
-                                <li><a href="#">services</a></li>
-                                <li><a href="#">portfolio</a></li>
-                                <li><a href="#">Contact</a></li>
-                                <li><a href="#">About us</a></li>
-                                <li><a href="#">Our Services</a></li>
-                                <li><a href="#">Expert Team</a></li>
-                                <li><a href="#">Contact us</a></li>
-                                <li><a href="#">Latest News</a></li>
+                                <li><a href="/about-us">About us</a></li>
+                                <li><a href="/destinations">Our Services</a></li>
+                                <li><a @click="contactUs" href="#">Contact us</a></li>
                             </ul>
                         </div>
                     </div>
@@ -95,7 +89,7 @@
                     <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
                         <div class="footer-menu">
                             <ul>
-                                <li><a href="#">Home</a></li>
+                                <li><a href="/">Home</a></li>
                                 <li><a href="#">Terms</a></li>
                                 <li><a href="#">Privacy</a></li>
                                 <li><a href="#">Policy</a></li>
@@ -109,7 +103,33 @@
     </footer>
     </div>
 </template>
+<script>
+import { Component, Vue } from 'vue-property-decorator'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+library.add(fas)
+
+library.add(fas);
+@Component({
+  components:{
+    FontAwesomeIcon,
+  },
+  methods: {
+    contactUs() {
+            window.location = "tel:8130586075";
+        }
+  }
+})
+export default class Footerbase extends Vue {
+
+}
+</script>
 <style>
+.social-icon {
+  height: 2rem;
+  margin-left: 12px;
+}
 ul {
     margin: 0px;
     padding: 0px;

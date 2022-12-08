@@ -42,7 +42,7 @@
           class="yt-button"
           src="https://images.ctfassets.net/8053dpll6ke8/2RgDegNfoxGy6qIuya0qrE/c50ac3a380a49cbb7a4585fb31f77bbd/youtube-img.png?h=250"
           alt="Youtube Button"
-        />&nbsp;Shorts
+        />&nbsp;Content
       </h2>
       <a href="https://www.youtube.com/@holidaydevice" target="blank"
         ><img
@@ -128,6 +128,18 @@ export default class AboutUs extends Vue {}
 .icon-phone {
   width: 25px;
   height: 15px;
+}
+#quickchat{
+  width: 3rem;
+  position: fixed;
+  display: block;
+  top: 100%;
+  right: -3rem;
+  left: inherit;
+  z-index: 1;
+  margin-top: -8.25rem;
+  transform-origin: 100% 100% 0;
+  animation: btn-slide .5s ease-out 1.4s forwards;
 }
 @media (min-width: 768px) {
   .yt-subscribe {
