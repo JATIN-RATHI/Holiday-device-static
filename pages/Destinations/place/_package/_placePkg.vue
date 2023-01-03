@@ -209,8 +209,8 @@ library.add(fas);
   },
   async asyncData({ params }) {
     const dataWithSlug =
-      (await contentfulRequest.getPageDataByPackageSlug(params.placePkg)) || {};
-    return { dataWithSlug };
+      (await contentfulRequest.getPageDataByPackageSlug(params.placePkg)) || {}
+    return { dataWithSlug }
   },
   mounted() {
     const doc = new jsPDF('p', 'mm', [297, 210]);

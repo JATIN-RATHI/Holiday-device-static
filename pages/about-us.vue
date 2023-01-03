@@ -98,7 +98,7 @@ const contentfulRequest = new ContentfulRequests();
   async asyncData({ params }) {
     const pageContent =
       (await contentfulRequest.getPageDataBySlug("about-us")) || {};
-    return { pageContent };
+    return { pageContent }
   },
 })
 export default class AboutUs extends Vue {}

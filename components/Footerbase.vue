@@ -58,7 +58,7 @@
                                 <h3>Useful Links</h3>
                             </div>
                             <ul>
-                                <li><a href="#">Home</a></li>
+                                <li><a href="/">Home</a></li>
                                 <li><a href="/about-us">About us</a></li>
                                 <li><a href="/destinations">Our Services</a></li>
                                 <li><a @click="contactUs" href="#">Contact us</a></li>

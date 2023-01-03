@@ -15,21 +15,7 @@
     <SeasonPackageCards />
     <h2 class="container card-heading justify-content-center my-5" id="testimonials">Our Customer Reviews</h2>
     <div>
-      <button id="sideButton" @click="show()">Quick Enquiry</button>
-      <div v-if="showModal" class="modal-vue">        
-        <div class="overlay" @click="hide()"></div>
-        <div class="modal o-section container d-block justify-content-center align-items-center">
-            <a id="close" style="cursor:pointer;padding-left: 100%;" @click="hide()"><FontAwesomeIcon icon="x" /> </a>  
-            <h2 class="justify-content-center">Quick Enquiry</h2>
-            <form>                      
-                <input id="field" type="text" placeholder="Full Name">
-                <input id="field" type="text" maxlength="10" placeholder="XXXX-XXX-XXX">
-                <input id="field" type="text" placeholder="Email ID">
-                <textarea id="field" name="description" cols="30" rows="4" placeholder="Describe your enquiry we'll get back to you asap!"></textarea>
-            </form>
-            <button class="submitBtn mx-auto">Submit Enquiry</button>
-        </div>
-      </div>
+      <enquiryForm />
       <a href="https://wa.me/+919910903878" target="_blank">
         <img id="quickchat" src="//images.ctfassets.net/8053dpll6ke8/6NRlk4c2TkubvMuDrom6UH/10b115063cad404a095a26221f78f9f7/contactus.gif" alt="quickchat"></img>
       </a>
@@ -54,6 +40,9 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import $ from 'jquery'
 import { emitter } from '@/utils/emitter'
+import apiCall from '~/services/apiCall'
+import enquiryForm from '~/components/modals/enquiryFormModal.vue'
+
 library.add(fas)
 const contentfulRequest = new ContentfulRequest()
 
@@ -67,25 +56,12 @@ const contentfulRequest = new ContentfulRequest()
     Footerbase,
     ReviewsCards,
     FontAwesomeIcon,
+    apiCall,
+    enquiryForm
   },
-  methods: {
-    show(){
-      this.$data.showModal = true;
-      $('body').css('overflow', 'hidden')
-      
-    },
-    hide(){
-      this.$data.showModal = false;
-      $('body').css('overflow', 'scroll')
-    }
-  },
-  data() {
-      return {
-      }
-    },  
   mounted(){
     this.$data.showModal = true;
-    emitter.on('enquiryFormModal', this.show)
+    emitter.on('enquiryFormModal', this.$data.show)
   },
   async asyncData() {
     const slideshowContent = (await contentfulRequest.getHolidayDeviceHomeSlideshowContent()) || {}
@@ -95,12 +71,23 @@ const contentfulRequest = new ContentfulRequest()
 export default class HolidayDevice extends Vue{
   data() {
       return {
-        showModal: false
+        loading: false,
+        showModal: false,
+        name: '',
+        mobile: '',
+        email: '',
+        description: ''
       }
     }
 }
 </script>
 <style>
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 .card-heading {
     position: relative;
     font-size: 1.5rem;
@@ -146,7 +133,7 @@ h2:after {
   max-width: 450px;
   min-width: 310px;
   left: 50%;
-  top: 13%;
+  top: 9%;
   z-index: 9999;
   margin: 0 auto;
   padding: 20px 30px;

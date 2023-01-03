@@ -5,7 +5,7 @@
             
             <b-nav pills class="navBar">             
                 <b-nav-item to="">Home</b-nav-item> 
-                <div @mouseover="destinationOnOver" @mouseleave="destinationOnLeave">
+                <div>
                     <b-nav-item-dropdown                  
                     class="dropdownItem"
                     ref="destinations"
@@ -177,27 +177,12 @@
             this.$router.push(url)
         },
         contactUs() {
-            window.location = "tel:8130586075";
+            window.location.href = "tel:8130586075"
         }
     }
   })
   export default class NavbarHome extends Vue {
-    $refs!:{
-        destinations: HTMLElement
-        specialityTours: HTMLElement
-    }
-    destinationOnOver() {
-        this.$refs.destinations.visible = true
-    }
-    destinationOnLeave() {
-        this.$refs.destinations.visible = false
-    }
-    specialityToursOnOver() {
-        this.$refs.specialityTours.visible = true
-    }
-    specialityToursOnLeave() {
-        this.$refs.specialityTours.visible = false
-    }
+[x: string]: any
   }
 </script>
 <style>

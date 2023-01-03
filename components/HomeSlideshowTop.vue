@@ -17,7 +17,7 @@
       <b-carousel-slide
         class="slideshow-slide"
         v-for="slide in slides"
-        :key="slide + 1"
+        :key="slide.fields.file.url + 1"
         :img-src="slide.fields.file.url"
       >
       <h1>{{ title }}</h1>

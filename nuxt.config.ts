@@ -5,7 +5,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Holiday Device - Device to see the world',
+    title: 'Holiday Device™ - Device to see the world',
     htmlAttrs: {
       lang: 'en'
     },
