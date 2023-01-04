@@ -80,23 +80,24 @@
                         <a v-if="!destinations" @click="show('destinations')">Destinations <FontAwesomeIcon icon="fa-caret-down"/></a>
                         <a v-if="destinations" @click="close('destinations')">Destinations <FontAwesomeIcon icon="fa-caret-up"/></a>
                         <ul v-if="destinations" class="sub-categories text-center">
-                            <li><a>Himachal Pradesh</a></li>
-                            <li><a>Uttrakhand</a></li>
-                            <li><a>Kerala</a></li>
-                            <li><a>Rajasthan</a></li>
-                            <li><a>Goa</a></li>
-                            <li><a>Andman</a></li>
-                            <li><a>Bali</a></li>
-                            <li><a>Dubai</a></li>
-                            <li><a>Mauritius</a></li>
-                            <li><a>Maldives</a></li>
-                            <li><a>Thailand</a></li>
-                            <li><a>Ladakh</a></li>
-                            <li><a>Assam</a></li>
-                            <li><a>Manipur</a></li>
-                            <li><a>Nepal</a></li>
-                            <li><a>Sikkim</a></li>
-                            <li><a>Kashmir</a></li>
+                            <li><a href="/destinations" id="allPackages">All Packages</a></li>
+                            <li><a href="/destinations">Himachal Pradesh</a></li>
+                            <li><a href="/destinations">Uttrakhand</a></li>
+                            <li><a href="/destinations">Kerala</a></li>
+                            <li><a href="/destinations">Rajasthan</a></li>
+                            <li><a href="/destinations">Goa</a></li>
+                            <li><a href="/destinations">Andman</a></li>
+                            <li><a href="/destinations">Bali</a></li>
+                            <li><a href="/destinations">Dubai</a></li>
+                            <li><a href="/destinations">Mauritius</a></li>
+                            <li><a href="/destinations">Maldives</a></li>
+                            <li><a href="/destinations">Thailand</a></li>
+                            <li><a href="/destinations">Ladakh</a></li>
+                            <li><a href="/destinations">Assam</a></li>
+                            <li><a href="/destinations">Manipur</a></li>
+                            <li><a href="/destinations">Nepal</a></li>
+                            <li><a href="/destinations">Sikkim</a></li>
+                            <li><a href="/destinations">Kashmir</a></li>
                         </ul>
                     </li>
                     <!-- <li>
@@ -115,8 +116,8 @@
                             <li><a>World Tour</a></li>
                         </ul>
                     </li> -->
-                    <li>About us</li>
-                    <li>Contact us</li>
+                    <li><a href="/about-us">About us</a></li>
+                    <li @click="contactUs">Contact us</li>
                     <li class="text-center mt-4">Follow us:</li>
                     <li class="text-center">
                         <FontAwesomeIcon icon="fa-brands fa-facebook"/>
@@ -126,7 +127,7 @@
                     </li>
                 </ul>
             </div>
-            <img src="//images.ctfassets.net/8053dpll6ke8/7o4FrG2QOQzrg27NqW80lU/782eeb70f8e350c1f4c93d372792a8cc/HD_logo_top.png" style="height: 75px"></img>
+            <img src="//images.ctfassets.net/8053dpll6ke8/7o4FrG2QOQzrg27NqW80lU/782eeb70f8e350c1f4c93d372792a8cc/HD_logo_top.png" style="height: 75px" alt="icon-brand">
         </div>
     </div>
 </template>
@@ -199,6 +200,10 @@
         font-size: 1.8rem;
         color: #ea7272f0;
     }
+    #allPackages {
+        color: #eb006c;
+        font-weight: bold;
+    }
     .nav-link{
         color: #6c757d;
         font-size: 1rem;
@@ -237,6 +242,10 @@
         list-style: none;
         color: #6c757d;
         font-size: 1.78rem;
+    }
+    .MobMenu li a {
+        text-decoration: none;
+        color:#6c757d;
     }
     .sub-categories {
         background-color: #ff9f9f4f;
