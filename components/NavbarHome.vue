@@ -76,7 +76,8 @@
             <div v-else class="MobMenu">
                 <a @click="close('MobMenuShow')"><FontAwesomeIcon icon="xmark"/></a>
                 <ul>
-                    <li>
+                    <li><a href="/">Home</a></li>
+                    <li>                        
                         <a v-if="!destinations" @click="show('destinations')">Destinations <FontAwesomeIcon icon="fa-caret-down"/></a>
                         <a v-if="destinations" @click="close('destinations')">Destinations <FontAwesomeIcon icon="fa-caret-up"/></a>
                         <ul v-if="destinations" class="sub-categories text-center">
