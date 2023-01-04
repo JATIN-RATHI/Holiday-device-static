@@ -66,17 +66,11 @@
         <div id="itinerary" class="border-bottom">
           <h2 class="heading-itinerary">Itinerary</h2>
           <iframe
+            title="HolidayDeviceMap"
             width="100%"
             height="300"
-            frameborder="0"
-            scrolling="no"
-            marginheight="0"
-            marginwidth="0"
             src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Holiday%20Device,%20H%20No-126,%20Kadipur,%20Kushak%20Colony,%20Kadipur,%20Delhi,%20110036+(Holiday%20Device)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
           >
-            <a href="https://www.maps.ie/distance-area-calculator.html"
-              >measure acres/hectares on map</a
-            >
           </iframe>
           <div
             v-for="dayPath in dataWithSlug.fields.itinerarySection"
@@ -163,13 +157,6 @@ const options = {
     [MARKS.BOLD]: (text) => `<b>${text}</b>`,
   },
   renderNode: {
-    [BLOCKS.UL_LIST]: (node, next) =>
-      `<ul class="richText-cls" style="list-style-type: disc;padding-left: 8%">${next(
-        node.content
-      )}</ul>`,
-    [BLOCKS.LIST_ITEM]: (node, next) => `<li>${next(node.content)}</li>`,
-    [BLOCKS.PARAGRAPH]: (node, next) =>
-      `<p style="word-break:break-word">${next(node.content)}</p>`,
     [BLOCKS.EMBEDDED_ASSET]: (node) =>
       `<img class="img-fluid" src="${node.data.target.fields.file.url}" height="${node.data.target.fields.file.details.image.height}" width="${node.data.target.fields.file.details.image.width}" alt="${node.data.target.fields.description}"/>`,
   },

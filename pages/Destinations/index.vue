@@ -113,47 +113,7 @@
         </div>
       </div>
       <div>
-        <button id="sideButton" @click="show()">Quick Enquiry</button>
-        <div v-if="showModal" class="modal-vue">
-          <div class="overlay" @click="hide()"></div>
-          <div
-            class="
-              modal
-              o-section
-              container
-              d-block
-              justify-content-center
-              align-items-center
-            "
-          >
-            <a
-              id="close"
-              style="cursor: pointer; padding-left: 100%"
-              @click="hide()"
-            >
-              <FontAwesomeIcon icon="x" />
-            </a>
-            <h2 class="justify-content-center">Quick Enquiry</h2>
-            <form>
-              <input id="field" type="text" placeholder="Full Name" />
-              <input
-                id="field"
-                type="text"
-                maxlength="10"
-                placeholder="XXXX-XXX-XXX"
-              />
-              <input id="field" type="text" placeholder="Email ID" />
-              <textarea
-                id="field"
-                name="description"
-                cols="30"
-                rows="4"
-                placeholder="Describe your enquiry we'll get back to you asap!"
-              ></textarea>
-            </form>
-            <button class="submitBtn mx-auto">Submit Enquiry</button>
-          </div>
-        </div>
+        <enquiryForm />
         <a href="https://wa.me/+919910903878" target="_blank">
           <img
             id="quickchat"
@@ -174,6 +134,7 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 import ContentfulRequests from "~/plugins/contentfulRequest";
 import NavbarHome from "../../components/NavbarHome.vue";
 import Footerbase from "~/components/Footerbase.vue";
+import enquiryForm from "~/components/modals/enquiryFormModal.vue";
 import $ from "jquery";
 library.add(fas);
 const contentfulRequest = new ContentfulRequests();
@@ -182,6 +143,7 @@ const contentfulRequest = new ContentfulRequests();
     FontAwesomeIcon,
     NavbarHome,
     Footerbase,
+    enquiryForm,
   },
   data() {
     return {
