@@ -133,4 +133,20 @@ export default class ContentfulRequests {
         })
         return data
     }
+    public async getPlacePageRoutes(): Promise<{ Content: any[]}> {
+        const data = { Content: [] }
+        await contentfulClient
+        .getEntries({
+            content_type: 'page',
+        })
+        .then((entry: any): any => {
+            data.Content = entry.items[0]
+        })
+        .catch((error: Error): any => {
+            console.error(`Error: ${ error.message }`)
+            console.error(`StackTrace: ${ error.stack }`)
+            process.exit(1)
+        })
+        return data
+    }
 }

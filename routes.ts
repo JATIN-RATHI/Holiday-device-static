@@ -3,8 +3,8 @@ const contentfulRequest = new ContentfulRequests()
 
 async function generatePlacePackagePageRoutes(): Promise<any[]> {
     const routes = [] as any
-    const response  = await contentfulRequest.getHolidayDevicePageContent()
-    response.pageContent.forEach((content) => {
+    const response  = await contentfulRequest.getPlacePageRoutes()
+    response.Content.forEach((content) => {
         if(content.fields.slug) {
             routes.push({ route: `/destinations/place/${content.fields.slug}`})
         }           
@@ -14,5 +14,5 @@ async function generatePlacePackagePageRoutes(): Promise<any[]> {
 
 export async function generateRoutes(): Promise<any[]> {
     const placePageRoutes = await generatePlacePackagePageRoutes()
-    return { ...placePageRoutes }
+    return placePageRoutes
 }
