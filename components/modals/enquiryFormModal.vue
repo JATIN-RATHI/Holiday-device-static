@@ -73,9 +73,9 @@ library.add(fas);
   },
 })
 export default class enquiryForm extends Vue {
-  [x: string]: any;
+[x: string]: any;
 
-  data() {
+data() {
     return {
       loading: false,
       showModal: false,
@@ -84,38 +84,38 @@ export default class enquiryForm extends Vue {
       email: "",
       description: "",
       error: null,
+    };
+  }
+    show() {
+      this.showModal = true;
+      $("body").css("overflow", "hidden");
     }
-  }
-  show() {
-    this.showModal = true;
-    $("body").css("overflow", "hidden");
-  }
-  hide() {
-    this.$data.showModal = false;
-    $("body").css("overflow", "scroll");
-  }
-  async submitFORM() {
-    console.log(
-      "submit form button is clicked",
-      this.name,
-      this.email
-    );
-    try {
-      const response = await apiCall.enquiryFormSubmit({
-        name: this.name,
-        phone: this.phone,
-        email: this.email,
-        description: this.description,
-      });
-      console.log("form response: ", JSON.parse(response.config.data));
-    } catch (err) {
-      this.error = err.response.data.error;
-      console.log(this.error);
+    hide() {
+      this.$data.showModal = false;
+      $("body").css("overflow", "scroll");
     }
-  }
+    async submitFORM() {
+      console.log(
+        "submit form button is clicked",
+        this.$data.name,
+        this.$data.email
+      );
+      try {
+        const response = await apiCall.enquiryFormSubmit({
+          name: this.$data.name,
+          phone: this.$data.phone,
+          email: this.$data.email,
+          description: this.$data.description,
+        });
+        console.log("form response: ", JSON.parse(response.config.data));
+      } catch (error) {
+        this.$data.error = error.response.data.error;
+        console.log(this.$data.error)
+      }
+    }
   mounted() {
-    this.showModal = true;
-    emitter.on("enquiryFormModal", this.show);    
+    this.$data.showModal = true;
+    emitter.on("enquiryFormModal", this.show);
   }
 }
 </script>
