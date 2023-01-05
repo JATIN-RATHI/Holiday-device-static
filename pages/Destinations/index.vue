@@ -186,6 +186,7 @@ const contentfulRequest = new ContentfulRequests();
   async fetch() {
     const pageData =
       (await contentfulRequest.getHolidayDevicePageContent()) || {};
+      console.log('pageData', pageData.pageContent)
     this.$data.destinationData = pageData.pageContent;
     const heroData =
       (await contentfulRequest.getHolidayDeviceHeroContent()) || {};

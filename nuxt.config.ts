@@ -1,8 +1,17 @@
 import webpack from "webpack"
+import { generateRoutes } from './routes'
 export default {
   // Target: https://go.nuxtjs.dev/config-target
+  mode: 'spa',
   target: 'static',
-
+  generate: {
+    crawler: false,
+    interval: 250,
+    concurrency: 1,
+    async routes() {
+      return await generateRoutes()
+    },
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'Holiday Device™ - Device to see the world',
