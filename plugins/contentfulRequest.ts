@@ -138,6 +138,7 @@ export default class ContentfulRequests {
         await contentfulClient
         .getEntries({
             content_type: 'page',
+            'fields.packageSection[exists]' : true
         })
         .then((entry: any): any => {
             data.Content = entry.items[0]
