@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div id="lg-screen" class="justify-content-between">
+        <div id="lg-screen" class="justify-content-between container">
             <img src="//images.ctfassets.net/8053dpll6ke8/7o4FrG2QOQzrg27NqW80lU/782eeb70f8e350c1f4c93d372792a8cc/HD_logo_top.png" style="height: 85px">
             
             <b-nav pills class="navBar">             
