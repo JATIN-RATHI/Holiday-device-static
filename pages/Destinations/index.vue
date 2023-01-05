@@ -136,6 +136,7 @@ import NavbarHome from "../../components/NavbarHome.vue";
 import Footerbase from "~/components/Footerbase.vue";
 import enquiryForm from "~/components/modals/enquiryFormModal.vue";
 import $ from "jquery";
+import { emitter } from "~/utils";
 library.add(fas);
 const contentfulRequest = new ContentfulRequests();
 @Component({
@@ -150,8 +151,7 @@ const contentfulRequest = new ContentfulRequests();
       destinationData: {},
       destinationHero: {},
       destinationDataWithSlug: {},
-      showModal: false,
-    };
+    }
   },
   methods: {
     readMore() {
@@ -180,13 +180,8 @@ const contentfulRequest = new ContentfulRequests();
       }
     },
     show() {
-      this.$data.showModal = true;
-      $("body").css("overflow", "hidden");
-    },
-    hide() {
-      this.$data.showModal = false;
-      $("body").css("overflow", "scroll");
-    },
+      emitter.emit("enquiryFormModal")
+    }
   },
   async fetch() {
     const pageData =

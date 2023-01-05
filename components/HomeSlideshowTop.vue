@@ -9,7 +9,7 @@
       indicators
       img-width="1024"
       img-height="480"
-      style="text-shadow: 1px 1px 2px #333;"
+      style="text-shadow: 1px 1px 2px #333"
       @sliding-start="onSlideStart()"
       @sliding-end="onSlideEnd()"
     >
@@ -20,79 +20,82 @@
         :key="slide.fields.file.url + 1"
         :img-src="slide.fields.file.url"
       >
-      <h1>{{ title }}</h1>
-      <h2>{{ slide.fields.title }}</h2>
-      <p>{{ slide.fields.description }}</p>
-      <button @click="openModal">Book Now!</button>
+        <h1>{{ title }}</h1>
+        <h2>{{ slide.fields.title }}</h2>
+        <p>{{ slide.fields.description }}</p>
+        <button @click="redirectPage">Book Now!</button>
       </b-carousel-slide>
     </b-carousel>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator'
-import { BCarousel, BCarouselSlide } from 'bootstrap-vue'
-import { emitter } from '@/utils/emitter'
+import { Component, Vue, Prop } from "vue-property-decorator";
+import { BCarousel, BCarouselSlide } from "bootstrap-vue";
+import { emitter } from "@/utils/emitter";
 @Component({
-    components:{
-        BCarousel,
-        BCarouselSlide,
+  components: {
+    BCarousel,
+    BCarouselSlide,
+  },
+  data() {
+    return {
+      slideNo: 0,
+      sliding: null,
+    };
+  },
+  methods: {
+    onSlideStart(slideNo) {
+      this.$data.sliding = true;
     },
-    data() {
-      return {
-        slideNo: 0,
-        sliding: null
-      }
+    onSlideEnd(slideNo) {
+      this.$data.sliding = false;
     },
-    methods: {
-      onSlideStart(slideNo) {
-        this.$data.sliding = true
-      },
-      onSlideEnd(slideNo) {
-        this.$data.sliding = false
-      },
-      openModal() {
-          emitter.emit('enquiryFormModal')
-      }
-    }
+    redirectPage() {
+      window.location.href = '/destinations'
+    },
+  },
 })
-export default class HomeSlideshowTop extends Vue{
-    @Prop({ type: Array, required: true })
-    slides?: any[]
+export default class HomeSlideshowTop extends Vue {
+  @Prop({ type: Array, required: true })
+  slides?: any[];
 
-    @Prop({ type:String, required: true})
-    title?: String
+  @Prop({ type: String, required: true })
+  title?: String;
 }
 </script>
 
 <style>
-.slideshow-slide h1, h2, p, button{
-    display: flex;
+.slideshow-slide h1,
+h2,
+p,
+button {
+  display: flex;
 }
-.slideshow-slide button{
-    background: transparent;
-    color: yellow;
-    border: 2px solid yellow;
-    border-radius: 12px;
+.slideshow-slide button {
+  background: transparent;
+  color: yellow;
+  border: 2px solid yellow;
+  border-radius: 12px;
 }
-.slideshow-slide button:hover{
-    color: rgb(218, 218, 26);
+.slideshow-slide button:hover {
+  color: rgb(218, 218, 26);
 }
-@media (max-width: 768px){
-    .slideshow-slide h1{
-        font-size: 1rem;
-    }
-    .slideshow-slide h2{
-        font-size: .89rem;
-    }
-    .slideshow-slide p{
-        font-size: .59rem;
-        margin-bottom: -10px;
-    }
-    .slideshow-slide button{
-        margin-top: 1rem;
-        margin-bottom: -1.5rem;
-        font-size: 0.59rem;
-    }
+@media (max-width: 768px) {
+  .slideshow-slide h1 {
+    font-size: 1rem;
+  }
+  .slideshow-slide h2 {
+    font-size: 0.89rem;
+  }
+  .slideshow-slide p {
+    font-size: 0.59rem;
+    margin-bottom: -10px;
+  }
+  .slideshow-slide button {
+    margin-top: 1rem;
+    margin-bottom: -1.5rem;
+    font-size: 0.59rem;
+  }
 }
 </style>

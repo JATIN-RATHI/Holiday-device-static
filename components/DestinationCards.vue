@@ -11,7 +11,7 @@
         >
             <b-card-text style="color: #6c757d;font-weight: 500;">{{ card.fields.packageDays }} <br>{{ card.fields.packagePriceCard }}</b-card-text>
             <!-- <b-card-text>{{ card.fields.packageBriefDetail }}</b-card-text> -->
-            <b-button @click="openModal" href="#" variant="primary" class="bookNowBtn">Book Now!</b-button>
+            <b-button :href="`/destinations/place/${ card.fields.slug }`" variant="primary" class="bookNowBtn">Book Now!</b-button>
         </b-card>
     </div>
 </template>
@@ -30,11 +30,6 @@ const contentfulRequest = new ContentfulRequest()
     data(){
         return{
             packageCardContent: [],
-        }
-    },
-    methods: {
-        openModal() {
-            emitter.emit('enquiryFormModal')
         }
     },
     async fetch() {

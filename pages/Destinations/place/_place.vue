@@ -102,6 +102,7 @@ import Footerbase from "~/components/Footerbase.vue";
 import ContentfulRequests from "~/plugins/contentfulRequest";
 import $ from "jquery";
 import enquiryForm from "~/components/modals/enquiryFormModal.vue";
+import { emitter } from "~/utils";
 library.add(fas);
 const contentfulRequest = new ContentfulRequests();
 @Component({
@@ -113,7 +114,6 @@ const contentfulRequest = new ContentfulRequests();
   },
   data() {
     return {
-      showModal: false,
       packageSlug: "",
     };
   },
@@ -142,14 +142,9 @@ const contentfulRequest = new ContentfulRequests();
         }
       }
     },
-    show() {
-      this.$data.showModal = true;
-      $("body").css("overflow", "hidden");
-    },
-    hide() {
-      this.$data.showModal = false;
-      $("body").css("overflow", "scroll");
-    },
+    show(){
+      emitter.emit("enquiryFormModal")
+    }
   },
   async asyncData({ params }) {
     const slug = params.place;
@@ -158,7 +153,7 @@ const contentfulRequest = new ContentfulRequests();
     return { dataWithSlug, slug };
   },
 })
-export default class SpecialityTours extends Vue {
+export default class place extends Vue {
   [x: string]: any;
 }
 </script>

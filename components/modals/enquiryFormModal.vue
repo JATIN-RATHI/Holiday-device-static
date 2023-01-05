@@ -71,6 +71,10 @@ library.add(fas);
   components: {
     FontAwesomeIcon,
   },
+})
+export default class enquiryForm extends Vue {
+  [x: string]: any;
+
   data() {
     return {
       loading: false,
@@ -80,44 +84,39 @@ library.add(fas);
       email: "",
       description: "",
       error: null,
-    };
-  },
-  methods: {
-    show() {
-      this.$data.showModal = true;
-      $("body").css("overflow", "hidden");
-    },
-    hide() {
-      this.$data.showModal = false;
-      $("body").css("overflow", "scroll");
-    },
-    async submitFORM() {
-      console.log(
-        "submit form button is clicked",
-        this.$data.name,
-        this.$data.email
-      );
-      try {
-        const response = await apiCall.enquiryFormSubmit({
-          name: this.$data.name,
-          phone: this.$data.phone,
-          email: this.$data.email,
-          description: this.$data.description,
-        });
-        console.log("form response: ", JSON.parse(response.config.data));
-      } catch (error) {
-        this.$data.error = error.response.data.error;
-        console.log(this.$data.error)
-      }
-    },
-  },
+    }
+  }
+  show() {
+    this.showModal = true;
+    $("body").css("overflow", "hidden");
+  }
+  hide() {
+    this.$data.showModal = false;
+    $("body").css("overflow", "scroll");
+  }
+  async submitFORM() {
+    console.log(
+      "submit form button is clicked",
+      this.name,
+      this.email
+    );
+    try {
+      const response = await apiCall.enquiryFormSubmit({
+        name: this.name,
+        phone: this.phone,
+        email: this.email,
+        description: this.description,
+      });
+      console.log("form response: ", JSON.parse(response.config.data));
+    } catch (err) {
+      this.error = err.response.data.error;
+      console.log(this.error);
+    }
+  }
   mounted() {
-    this.$data.showModal = true;
-    emitter.on("enquiryFormModal", this.$data.show);
-  },
-})
-export default class enquiryForm extends Vue {
-[x: string]: any;
+    this.showModal = true;
+    emitter.on("enquiryFormModal", this.show);    
+  }
 }
 </script>
 
