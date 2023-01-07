@@ -150,9 +150,7 @@ const contentfulRequest = new ContentfulRequests();
     const slug = params.place;
     const dataWithSlug =
       (await contentfulRequest.getPageDataBySlug(slug)) || {};
-    
-    const testdata = ( await contentfulRequest.getPlacePageRoutes()) || {}
-    return { dataWithSlug, slug, testdata };
+    return { dataWithSlug, slug };
   },
 })
 export default class place extends Vue {

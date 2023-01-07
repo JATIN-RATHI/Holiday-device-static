@@ -133,6 +133,25 @@ export default class ContentfulRequests {
         })
         return data
     }
+    public async getPackagePageRoutes(): Promise<object>{
+        var data = {}
+        await contentfulClient
+        .getEntries({
+            content_type: 'packageCard',
+        })
+        .then((entry: any): any => {
+            const items: any[] = entry?.items || []
+            const result: any[] = []
+            items.forEach((item) => result.push(item))
+            data = result
+        })  
+        .catch((error: Error): any => {
+            console.error(`Error: ${ error.message }`)
+            console.error(`StackTrace: ${ error.stack }`)
+            process.exit(1)
+        })
+        return data
+    }
     public async getPlacePageRoutes(): Promise<{ Content: any[]}> {
         const data = { Content: [] }
         await contentfulClient
