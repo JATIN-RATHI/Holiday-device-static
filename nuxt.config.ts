@@ -105,42 +105,8 @@ export default {
     '@nuxtjs/style-resources',
     '@nuxtjs/axios',
     'bootstrap-vue/nuxt',
-    'nuxt-purgecss',
-    '@nuxtjs/sitemap'
+    'nuxt-purgecss'
   ],
-  sitemap: {
-    hostname: 'https://brinkshome.com',
-    path: '/sitemap.xml',
-    cacheTime: 1000 * 60 * 15,
-    gzip: false,
-    generate: false,
-    // These are our main priority routes, when top priority routes
-    // All top priority routes/pages should be listed in the routes: [array]
-    sitemaps: [
-      {
-        path: '/sitemap-main.xml',
-        exclude: [
-          '/404',
-          '/destinations/place/leh-ladakh-tour',
-          '/destinations/place/leh-ladakh'
-        ],
-        routes: [
-          {
-            url: '/destinations/place/leh-ladakh-tour',
-            changefreq: 'daily',
-            priority: 1,
-            lastmod: new Date()
-          },
-          {
-            url: '/destinations/package/leh-ladakh',
-            changefreq: 'daily',
-            priority: 1,
-            lastmod: new Date()
-          },
-        ]
-      }
-    ]
-  },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }
