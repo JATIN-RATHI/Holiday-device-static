@@ -20,7 +20,7 @@
         <img id="quickchat" src="//images.ctfassets.net/8053dpll6ke8/6NRlk4c2TkubvMuDrom6UH/10b115063cad404a095a26221f78f9f7/contactus.gif" alt="quickchat"></img>
       </a>
     </div>
-    <ReviewsCards />
+    <!-- <ReviewsCards /> -->
     <Footerbase />
   </div>  
 </template>

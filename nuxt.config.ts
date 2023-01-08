@@ -2,8 +2,14 @@ import webpack from "webpack"
 import { generateRoutes } from './routes'
 export default {
   // Target: https://go.nuxtjs.dev/config-target
-  // mode: 'spa',
+  ssr: false,
   target: 'static',
+  env: {
+    CTF_ACCESS_TOKEN : process.env.CTF_ACCESS_TOKEN,
+    CTF_ENV : process.env.CTF_ENV,
+    CTF_SPACE_Id : process.env.CTF_SPACE_Id,
+    CTF_HOST : process.env.CTF_HOST
+  },
   generate: {
     crawler: false,
     interval: 250,
@@ -11,6 +17,10 @@ export default {
     async routes() {
       return await generateRoutes()
     },
+  },
+  image: {
+    contentful: {},
+    domains: ['images.ctfassets.net']
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -39,7 +49,7 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     'bootstrap/dist/css/bootstrap.css',
-    'bootstrap-vue/dist/bootstrap-vue.css', 
+    'bootstrap-vue/dist/bootstrap-vue.css',
   ],
   loaders: {
     vue:{
@@ -74,7 +84,7 @@ export default {
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
-  bootstrapVue:{
+  bootstrapVue: {
     components: ['BCarousel', 'BCarouselSlide', 'BCard', 'BCardText', 'BCardGroup'],
   },
 
@@ -95,9 +105,42 @@ export default {
     '@nuxtjs/style-resources',
     '@nuxtjs/axios',
     'bootstrap-vue/nuxt',
-    'nuxt-purgecss'
+    'nuxt-purgecss',
+    '@nuxtjs/sitemap'
   ],
-
+  sitemap: {
+    hostname: 'https://brinkshome.com',
+    path: '/sitemap.xml',
+    cacheTime: 1000 * 60 * 15,
+    gzip: false,
+    generate: false,
+    // These are our main priority routes, when top priority routes
+    // All top priority routes/pages should be listed in the routes: [array]
+    sitemaps: [
+      {
+        path: '/sitemap-main.xml',
+        exclude: [
+          '/404',
+          '/destinations/place/leh-ladakh-tour',
+          '/destinations/place/leh-ladakh'
+        ],
+        routes: [
+          {
+            url: '/destinations/place/leh-ladakh-tour',
+            changefreq: 'daily',
+            priority: 1,
+            lastmod: new Date()
+          },
+          {
+            url: '/destinations/package/leh-ladakh',
+            changefreq: 'daily',
+            priority: 1,
+            lastmod: new Date()
+          },
+        ]
+      }
+    ]
+  },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }
