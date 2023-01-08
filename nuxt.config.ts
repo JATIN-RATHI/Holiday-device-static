@@ -80,6 +80,10 @@ export default {
   plugins: [
     '~/plugins/bootstrapVue.ts',
     '~/plugins/bootstrap.ts',
+    {
+      src: '~/plugins/owl.ts', 
+      ssr: false
+    },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

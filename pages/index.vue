@@ -13,14 +13,15 @@
     <DestinationCardsVue />
     <h2 class="container card-heading justify-content-center my-5">Our Tour Package</h2>
     <SeasonPackageCards />
-    <h2 class="container card-heading justify-content-center my-5" id="testimonials">Our Customer Reviews</h2>
+    <!-- <h2 class="container card-heading justify-content-center my-5" id="testimonials">Our Customer Reviews</h2>     -->
+    <!-- <ReviewsCards /> -->
+    <!-- <HDCarousel /> -->
     <div>
       <enquiryForm />
       <a href="https://wa.me/+919910903878" target="_blank">
         <img id="quickchat" src="//images.ctfassets.net/8053dpll6ke8/6NRlk4c2TkubvMuDrom6UH/10b115063cad404a095a26221f78f9f7/contactus.gif" alt="quickchat"></img>
       </a>
-    </div>
-    <!-- <ReviewsCards /> -->
+    </div>    
     <Footerbase />
   </div>  
 </template>
@@ -42,6 +43,7 @@ import $ from 'jquery'
 import { emitter } from '@/utils/emitter'
 import apiCall from '~/services/apiCall'
 import enquiryForm from '~/components/modals/enquiryFormModal.vue'
+import HDCarousel from '~/components/HDCarousel.vue'
 
 library.add(fas)
 const contentfulRequest = new ContentfulRequest()
@@ -57,7 +59,8 @@ const contentfulRequest = new ContentfulRequest()
     ReviewsCards,
     FontAwesomeIcon,
     apiCall,
-    enquiryForm
+    enquiryForm,
+    HDCarousel
   },
   mounted(){
     this.$data.showModal = true;
@@ -69,6 +72,7 @@ const contentfulRequest = new ContentfulRequest()
   }  
 })
 export default class HolidayDevice extends Vue{
+[x: string]: any
   data() {
       return {
         loading: false,

@@ -186,7 +186,6 @@ const contentfulRequest = new ContentfulRequests();
   async fetch() {
     const pageData =
       (await contentfulRequest.getHolidayDevicePageContent()) || {};
-      console.log('pageData', pageData.pageContent)
     this.$data.destinationData = pageData.pageContent;
     const heroData =
       (await contentfulRequest.getHolidayDeviceHeroContent()) || {};
@@ -200,7 +199,9 @@ const contentfulRequest = new ContentfulRequests();
     this.$data.destinationHero = heroData;
   },
 })
-export default class destinations extends Vue {}
+export default class destinations extends Vue {
+[x: string]: any;
+}
 </script>
 <style scoped>
 .modal-vue .overlay {

@@ -72,7 +72,7 @@
             </div>
         </div>
     </div>
-</template>
+</template>``
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import ContentfulRequests from '~/plugins/contentfulRequest'
@@ -141,6 +141,7 @@ const contentfulRequest = new ContentfulRequests()
     }
 })
 export default class ReviewsCards extends Vue {
+[x: string]: any
    data() {
         return {
             first: true,
