@@ -368,6 +368,7 @@ export default class destinations extends Vue {
 }
 
 .btn-details {
+  display: block;
   background: #ea7272f0;
   border: 2px solid #ea7272f0;
   padding: 10px 50px 10px 50px;
