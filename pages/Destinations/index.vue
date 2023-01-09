@@ -379,6 +379,7 @@ export default class destinations extends Vue {
 }
 
 .btn-enquire {
+  display: block;
   background: white;
   border: 2px solid #ea7272f0;
   padding: 10px 48px 10px 48px;
@@ -407,6 +408,7 @@ export default class destinations extends Vue {
 .icon-tour {
   height: 1rem;
   margin: 0 5px 0 5px;
+  color: #c56868f0;
 }
 
 .path h5 {
