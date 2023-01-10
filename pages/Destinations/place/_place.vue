@@ -304,64 +304,6 @@ export default class place extends Vue {
   }
 }
 
-.modal-vue .overlay {
-  position: fixed;
-  z-index: 9998;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-#field {
-  width: 90%;
-  margin: 1rem;
-  padding: 0.5rem;
-}
-
-.modal-vue .modal {
-  position: fixed;
-  align-items: center;
-  height: 550px;
-  max-width: 450px;
-  min-width: 310px;
-  left: 50%;
-  top: 9%;
-  z-index: 9999;
-  margin: 0 auto;
-  padding: 20px 30px;
-  border-radius: 15px;
-  background-color: #fff;
-  transform: translateX(-50%);
-}
-
-.modal-vue .close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
-
-#sideButton {
-  background-color: #ea7272f0;
-  border: white;
-  color: white;
-  height: 3rem;
-  font-size: 1.5rem;
-  position: fixed;
-  display: block;
-  top: 50%;
-  right: -3rem;
-  left: inherit;
-  width: 10.5rem;
-  height: 3rem;
-  z-index: 1;
-  margin-top: -8.25rem;
-  transform: rotate(270deg);
-  transform-origin: 100% 100% 0;
-  animation: btn-slide 0.5s ease-out 1.4s forwards;
-}
-
 @keyframes btn-slide {
   100% {
     right: 0;

@@ -1,6 +1,42 @@
 <template>
   <div class="container">
     <div v-if="loading" class="spinner"></div>
+    <div v-if="enquirySubmitted" class="thankyou-modal text-center d-grid">
+      <a
+          id="close"
+          style="cursor: pointer; padding-left: 100%"
+          @click="hideThankyouModal()"
+          ><FontAwesomeIcon icon="x" />
+        </a>
+      <h2 class="justify-content-center">Quick Enquiry</h2>
+      <img
+        src="https://images.ctfassets.net/8053dpll6ke8/2GVVmGMtNULVRuN5Ckr2pI/127432a9a4f342929b71067178f584d2/thankyou.gif?h=250"
+        alt="thankyou gif"
+      />Our agent will reach you asap!
+      <button @click="thankyouExploreBtn()" class="submitBtn mx-auto">
+        Explore Packages
+      </button>
+    </div>
+    <div v-if="errorSubmission" class="thankyou-modal text-center d-grid">
+      <a
+          id="close"
+          style="cursor: pointer; padding-left: 100%"
+          @click="hideErrorModal()"
+          ><FontAwesomeIcon icon="x" />
+        </a>
+      <h2 class="justify-content-center">Quick Enquiry</h2>
+      <img
+        src="https://images.ctfassets.net/8053dpll6ke8/5XjDfG4GLXrz2At7LxVtR2/35a43bf7510e15abb458aa5f1bcd3d46/submission_error.gif?h=250"
+        alt="submission failed gif"
+      />
+      Can't submit the form at this moment!
+      <button @click="errorCallBtn()" class="submitBtn mx-auto">
+        Call us!
+      </button>
+      <button @click="thankyouExploreBtn()" class="submitBtn mx-auto">
+        Explore Packages
+      </button>
+    </div>
     <button id="sideButton" @click="show()">Quick Enquiry</button>
     <div v-if="showModal" class="modal-vue">
       <div class="overlay" @click="hide()"></div>
@@ -74,12 +110,14 @@ library.add(fas);
   },
 })
 export default class enquiryForm extends Vue {
-[x: string]: any;
+  [x: string]: any;
 
-data() {
+  data() {
     return {
       loading: false,
       showModal: false,
+      enquirySubmitted: false,
+      errorSubmission: false,
       name: "",
       phone: "",
       email: "",
@@ -87,33 +125,49 @@ data() {
       error: null,
     };
   }
-    show() {
-      this.showModal = true;
-      $("body").css("overflow", "hidden");
+  show() {
+    this.showModal = true;
+    $("body").css("overflow", "hidden");
+  }
+  hideThankyouModal() {
+    this.$data.enquirySubmitted = false
+  }
+  hideErrorModal(){
+    this.$data.errorSubmission = false
+  }
+  hide() {
+    this.$data.showModal = false;
+    $("body").css("overflow", "scroll");
+  }
+  thankyouExploreBtn() {
+    window.location.href = "/destinations";
+  }
+  errorCallBtn() {
+    window.location.href = "tel:8130586075"
+  }
+  async submitFORM() {
+    console.log(
+      "submit form button is clicked",
+      this.$data.name,
+      this.$data.email
+    );
+    try {
+      const response = await apiCall.enquiryFormSubmit({
+        name: this.$data.name,
+        phone: this.$data.phone,
+        email: this.$data.email,
+        description: this.$data.description,
+      });
+      this.hide()
+      this.$data.enquirySubmitted = true;
+      console.log("form response: ", JSON.parse(response.config.data));
+    } catch (error) {
+      this.hide()
+      this.$data.errorSubmission = true;
+      this.$data.error = error.response.data.error;
+      console.log(this.$data.error);
     }
-    hide() {
-      this.$data.showModal = false;
-      $("body").css("overflow", "scroll");
-    }
-    async submitFORM() {
-      console.log(
-        "submit form button is clicked",
-        this.$data.name,
-        this.$data.email
-      );
-      try {
-        const response = await apiCall.enquiryFormSubmit({
-          name: this.$data.name,
-          phone: this.$data.phone,
-          email: this.$data.email,
-          description: this.$data.description,
-        });
-        console.log("form response: ", JSON.parse(response.config.data));
-      } catch (error) {
-        this.$data.error = error.response.data.error;
-        console.log(this.$data.error)
-      }
-    }
+  }
   mounted() {
     this.$data.showModal = true;
     emitter.on("enquiryFormModal", this.show);
@@ -146,7 +200,8 @@ data() {
   margin: 1rem;
   padding: 0.5rem;
 }
-.modal-vue .modal {
+.modal-vue .modal,
+.thankyou-modal {
   position: fixed;
   align-items: center;
   height: 550px;
