@@ -12,6 +12,7 @@
           d-block
           justify-content-center
           align-items-center
+          text-center
         "
       >
         <a
