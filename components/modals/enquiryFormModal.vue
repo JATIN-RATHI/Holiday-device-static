@@ -208,7 +208,7 @@ export default class enquiryForm extends Vue {
   max-width: 450px;
   min-width: 310px;
   left: 50%;
-  top: 9%;
+  top: 5%;
   z-index: 9999;
   margin: 0 auto;
   padding: 20px 30px;
