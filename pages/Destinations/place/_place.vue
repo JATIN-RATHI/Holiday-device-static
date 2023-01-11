@@ -280,6 +280,7 @@ export default class place extends Vue {
 
 .icon-tour {
   height: 1.25rem;
+  color: #c56868f0;
   margin: 0 5px 0 5px;
 }
 

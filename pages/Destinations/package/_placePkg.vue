@@ -232,6 +232,7 @@ export default class PlacePackage extends Vue {}
   display: flex;
 }
 .icon-tour {
+  color: #c56868f0;
   width: 25px;
   height: 22px;
 }
