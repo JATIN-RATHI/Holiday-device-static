@@ -244,6 +244,7 @@ export default class place extends Vue {
 }
 
 .btn-details {
+  display: block;
   background: #ea7272f0;
   border: 2px solid #ea7272f0;
   padding: 10px 50px 10px 50px;
@@ -253,6 +254,7 @@ export default class place extends Vue {
 }
 
 .btn-enquire {
+  display: block;
   background: white;
   border: 2px solid #ea7272f0;
   padding: 10px 48px 10px 48px;
