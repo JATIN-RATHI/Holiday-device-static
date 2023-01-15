@@ -2,10 +2,10 @@ const contentful = require('contentful');
 // use default environment config for convenience
 // these will be set via `env` property in nuxt.config.js
 const config = {
-  space: process.env.CTF_SPACE_Id,
-  accessToken: process.env.CTF_ACCESS_TOKEN,
-  environment: process.env.CTF_ENV,
-  host: process.env.CTF_HOST,
+  space: "8053dpll6ke8",
+  accessToken: "3-PBVPuoy2fBN0gmiQ7B0BdB721TQM6DHge5xu2eoRw",
+  environment: "master",
+  host: "preview.contentful.com",
   resolveLinks: true,
   removeUnresolved: true,
   logHandler: (level: any, data: any) => {
