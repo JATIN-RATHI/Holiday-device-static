@@ -8,7 +8,8 @@ export default {
     CTF_ACCESS_TOKEN : process.env.CTF_ACCESS_TOKEN,
     CTF_ENV : process.env.CTF_ENV,
     CTF_SPACE_Id : process.env.CTF_SPACE_Id,
-    CTF_HOST : process.env.CTF_HOST
+    CTF_HOST : process.env.CTF_HOST,
+    CTF_SERVER_IP: process.env.CTF_SERVER_IP,
   },
   generate: {
     crawler: false,
