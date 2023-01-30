@@ -129,7 +129,7 @@ export default class AboutUs extends Vue {}
   width: 25px;
   height: 15px;
 }
-#quickchat{
+#quickchat {
   width: 3rem;
   position: fixed;
   display: block;
